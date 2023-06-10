@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALINNNNN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Je peux avoir un calin ?</h1>
+    <button id="runaway-btn">Non</button>
+    <button id="aled" onclick="alarm('TU ES LA MEILLEURE')">Ouiiiii</button>
+
+    <script src="./node_modules/animejs/lib/anime.min.js"></script>
+    <script language="JavaScript">
+        console.log("CALIN")
+        const button = document.getElementById("runaway-btn");
+
+        const animateMove = (element, prop, pixels) =>
+            anime({
+                targets: element,
+                [prop]: `${pixels}px`,
+                easing: "easeOutCirc"
+            });
+
+        ["mouseover", "click"].forEach(function (el) {
+            button.addEventListener(el, function (event) {
+                const top = getRandomNumber(window.innerHeight - this.offsetHeight);
+                const left = getRandomNumber(window.innerWidth - this.offsetWidth);
+
+                animateMove(this, "left", left).play();
+                animateMove(this, "top", top).play();
+            });
+        });
+
+        const getRandomNumber = (num) => {
+            return Math.floor(Math.random() * (num + 1));
+        };
+    </script>
+</body>
+
+</html>
